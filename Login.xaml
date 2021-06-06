@@ -1,0 +1,180 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Login" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_CheckLogin" Type="OutArgument(x:Boolean)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>770,2142</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Login_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="58">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.CV</x:String>
+      <x:String>UiPath.Shared.ObjectLibrary</x:String>
+      <x:String>UiPath.CV.Activities</x:String>
+      <x:String>UiPath.CV.Activities.Interfaces</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="48">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Login" sap:VirtualizedContainerService.HintSize="780,2077" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="userName" />
+      <Variable x:TypeArguments="x:String" Name="password" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="738,238" sap2010:WorkflowViewState.IdRef="InputDialog_1" IsPassword="False" Label="UserName" Title="Login">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[userName]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <ui:InputDialog Options="{x:Null}" OptionsString="{x:Null}" DisplayName="Input Dialog" sap:VirtualizedContainerService.HintSize="738,238" sap2010:WorkflowViewState.IdRef="InputDialog_2" IsPassword="True" Label="Password" Title="Login">
+      <ui:InputDialog.Result>
+        <OutArgument x:TypeArguments="x:String">[password]</OutArgument>
+      </ui:InputDialog.Result>
+    </ui:InputDialog>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Đăng nhập" sap:VirtualizedContainerService.HintSize="738,1429" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="704,1213" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into '-*-'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="662,226" sap2010:WorkflowViewState.IdRef="NTypeInto_1" Text="[userName]">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://daotao.qnu.edu.vn/Login" DesignTimeRectangle="573, 458, 220, 34" ElementType="InputBox" FriendlyName="'INPUT txtTaiKhoan'" FullSelectorArgument="&lt;webctrl tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOAAAAAmCAYAAADdnJdIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANCSURBVHhe7Z2xTuNAFEX3//+AgiIp0tCkSJMmFQ0fgGgpopSpKCJReHUQN7oMtjcstkdx7pOOlvF43oztdxiHLfKnSSQS1SICJhIV44uAh8OheXl5aZ6fn0MIA4NbOOZxFpCO/X7fnE6n5v39PYQwMLiFYy7hWUDsjHwhjAuO4ZriLCBbZNuAEMKw4JoiAoYwMREwhIpEwBAqEgFDqEgEDKEiETCEikTAECoymID39/fN3d3dNzj++vp6Pu/x8fHj+FCSk+fh4aF5e3v7aJOfY7TX6/WXuceGOVkLa2jrF7oH/zovzJ/BBBQU/GKxaC189T09PTWr1ao5Ho/fzrkUFbGQhORcLpcfxzabTevYsbhEQNbHtXMPuu5TuB0mFdCRLG19P4G1+g5Yk0sF1FqHugfheplUQN+1XBrmY9fimPq7ilhFzjm83u52u2+5lMPzaF28lqrPd8gyL+d5XtGXRzm22+15F+Zfl4xzNc5fz3UPGKv+3zyHcB3wjBWjCqgCUzFSiCpc+ig4yUK7/OwofBy5JC7FT5vXu7KoOc4xcmqs2rpW5vY8npd+0ZdHAmpOtf06PadfC33cA2933YMwH3jOilEFpLB8V6NfnwOZz+XsykG/CwYujp+rPhfQc3KMPuaWKL6+rrw/zeOSOTq3S7i2XGF+8NwVowmoYtKrlVDBMd//CshYiVLOw7mXCOg/K+8YAjKGa9a1k8cF9HugsRFw3vDcFZPugE5ZfF056O8TsMzj7TInx/rEGUNA/7lsMz474O3Bc1dM+hmQwlK77OvKARSsxFCRqu1FrD7lLXO6OLRdOPWp7fP35dGcfQIqJ+NZqwvIzqixfi3KFeYHz1kxqoBAcen10IuL+S4VECha5fC/gkoA9fn/tZU5SwF9LMf5a6Ty+tx9eZSjS0DGsC7m4Dxfu+6B1gC/eQ7hOuAZKwYRcC4gkcSZAgmoX0LhNoiAnyCbdi7tar6TDQn3t9xdI+BtEgE/8ddDmHL3gwh4m0TAECoSAUOoSAQMoSIRMISKRMAQKhIBQ6hIBAyhIq0C5stZQhifzi9nydeThTAuuNX59WQEHdjJFhlCGBbccvmILwImEolpIwImEtWiaf4CMrvzJtepM/gAAAAASUVORK5CYII=" InformativeScreenshot="20f17a6d013abc4dca10cf2120d2191a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Đăng nhập' /&gt;" SearchSteps="FuzzySelector, Image">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                      <uix:Target DesignTimeRectangle="658, 428, 50, 20" ElementType="Text" FriendlyName="'-*-'" FullSelectorArgument="&lt;webctrl aaname='-*-' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='-*-' tag='DIV' type='' check:text='-*-' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADYAAAAYCAYAAACx4w6bAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVFhH7dQhDkQhDEVR9r8DBAaDwSBYAg6PQrECHO79lPwZMXpoUtKbYAjmpKQGl6YwaSlMWiywtRZyzphzvjfnOw5rrSGEgJQSYowbyBHLxMYYcM5tJFfHYfT9aGK99z01QnKky0Naf4fRcrDW7kPLgjbib6WU7xvv/ZFtaWqtoHNLH49+RWkpTFoKk5bCpKUwaV0KAx4SfxfAHtUxsgAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="None" DisplayName="Type Into 'INPUT txtMatKhau'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="662,226" sap2010:WorkflowViewState.IdRef="NTypeInto_2" Text="[password]">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="https://daotao.qnu.edu.vn/Login" DesignTimeRectangle="573, 512, 220, 34" ElementType="InputBoxPassword" FriendlyName="'INPUT txtMatKhau'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='password' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='password' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOAAAAAmCAYAAADdnJdIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKuSURBVHhe7Z29bupAEEbv+78BBQUUNDQUNDRUNDwAogUKoKJCNBR79SF9aHAMSZTFEylnpKP1/s060p6s4xT+VwiCSAsEJIjEeBBwv9+X9XpdVqsVAFRGbsmxGHcB1bHb7crlcinX6xUAKiO35FiU8C6g7EQ+gPcix+Sa4y6gjsi2CQBQF7nmQECAjkFAgEQQECARBARIBAEBEvlzAs5ms7LZbFr7ALqGExAgkWoCLhaL0uv1bmVsP5/PZTwe3/qaeafTaWv7MzRuOByW0+n00O41mms3eXaPAFlUFXAwGJTJZHITwu163Ov3+x9EU/toNCrL5fJBKuWRTDGH+YmAmuP1dJ88hsJvoKqAkkCbPG5u5VK7xIl5JYQlU9mFgG3rAWRSVUA9Uoooguo+5ZzXwuhUFJZK/W5rkzAK6BxCdZV6waL+mNNz/bgrdCL7l0TMqbraOSGhK7T/HFUE1FzLYzG22+1tkzuvx+raIllalZ7v3MayHA6HhznOYZFc9xrxnlRXe+xDQMhC+89RRUBLp9IbX8JEASMap76vCqjTS4J4vLBwsS1KFmmTEwEhC+0/RxUBvcGVQ3W1WzLnVRkfB6NQKl8JqDn6OzNK85mAkskvgrweAsJvQPvPUUVAX0sIv5CJAjZladY995mAliUK9pmA8bpZR0DI5C0CavPqpLFIbQJGAXQyfVfAV1KLKJlK5/S9Ne/VP7NyqI6A0AXad45qAjaFiLKortKPoBalKUQ8lYzmxXblV/14PL4U0Dm1nsbN5/O7kB7r+9Gb1Oa/UgDeRTUBAeD7pAoYT02AvwgnIEAiCAiQCAICJIKAAIkgIEAiCAiQCAICJIKAAIm0CsjHWQDez9OPs/B5MoD3Ireefp5MoQ7ZqSMSAOoit6J8igcBCYLoNhCQINKilP+MUF+J96IJQAAAAABJRU5ErkJggg==" InformativeScreenshot="e0bda4c56c53d9baff2879835b15d1ae.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Đăng nhập' /&gt;" SearchSteps="FuzzySelector, Image" />
+              </uix:NTypeInto.Target>
+            </uix:NTypeInto>
+            <uix:NClick ClickType="Single" DisplayName="Click 'Đăng nhập'" sap:VirtualizedContainerService.HintSize="662,166" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="https://daotao.qnu.edu.vn/Login" DesignTimeRectangle="573, 566, 220, 32" ElementType="Button" FriendlyName="'Đăng nhập'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' aaname='Đăng nhập' check:text='Đăng nhập' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOAAAAAkCAYAAACQVDZDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALWSURBVHhe7Z2xbhNBFEX5N74A/oB/4APogBqJGvEBiAooqaCKaChokBAFBYiAbYwsJ2HhOtzl5Wm8iT27mSCdKx15d9/M7Gw0x+M4Ra51hJBmQUBCGqYX8PmbVXfz/mF3/c5XAJgIOSbXnF5AFW49+FbsBADjIMfkmtMLWGoMANPgICBAAxwEBGiAg4AADXAQEKABDgICNMBBQIAGOAgI0AAHASt5/PJnd3T894cY8uHz8Zl2zw5W3cH79eZYNZ3H+tTonnlOGT/Ll9lJd/vRvNgGxsFBwEq0aJerX5tXX9Pi1SKOC97XlBYL/CICqv7249Fmfn6zgGlwELCSkoBD11txnoB6Q7j75Ed//vDF8kwdxsVBwEq2ieYdzx81VY8fVS2D2306POnrGi/KoLaOjnM9ttNYqisaz/NSTfdQPdeE5hnjHdDPp53RYXesx0HACrJUisUSOtZiLcloaV2zVD73OOqTaz73fYz6ZOnUXv2Gahrr+/Lfm0i8p66pn9v63M8C++EgYCVakJYp17TIS7uFFq9lsFSxnfqJfOy+QwLGthozCrit5muxlgWMwuWxYHccBKxkm4AWywtXC9ZRe/cZErBUm0JA38eZ/dkNo4D5+dQ3jgW74yBgJdsEjNdzm3g+JGA+FlMImMeM55ojO+D4OAhYSZZLWCov0ryIdf2iH0GjDG47hYB5PllA983PAvvhIGAlXpA5USihBey8enf6O5YW8XkCxr66j76NHFtAz8H38Pz0bELH+gbVyc8Gu+Mg4H+GpLU4pfrYWEC9luqwHw4CXnG023jn8k4Vd7Ix0a4a/xwhEHAaHAS84kgKCeBc5u4nEHAaHAQEaICDgAANcBAQoAEOAgI0wEFAgAY4CAjQAAcBARrg9ALeuHf6jyNKjQFgHOSYXHN6AZ++nm0KpU4AMA5yTK45vYDr9bpbLBbdfD4HgImQY3LN6QUkhFx2uu43RvcSxwYMOjgAAAAASUVORK5CYII=" InformativeScreenshot="b4ea98a2d83d40c99d499186cf61af80.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Đăng nhập' /&gt;" SearchSteps="FuzzySelector, Image" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Tên đăng'" sap:VirtualizedContainerService.HintSize="662,381" sap2010:WorkflowViewState.IdRef="NCheckState_1">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="304,155" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[out_CheckLogin]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="304,155" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Boolean">[out_CheckLogin]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="https://daotao.qnu.edu.vn/Login" DesignTimeRectangle="573, 557, 251, 33" ElementType="Text" FriendlyName="'Tên đăng'" FullSelectorArgument="&lt;webctrl tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SPAN' type='' aaname=' Tên đăng nhập hoặc mật khẩu không chính xác' check:text='Tên đăng nhập hoặc mật khẩu không chính xác' /&gt;" ImageBase64="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" InformativeScreenshot="ded2f32089bfc4fdfff8f48ea8700f78.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Đăng nhập' /&gt;" SearchSteps="FuzzySelector" />
+              </uix:NCheckState.Target>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1382, 754" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAKsSURBVFhH7ZbZjtowFIZ5pL5gq2HfAmHf9+2FuOlcTMUNKgikSEhlhzP+kzhkgidwRr1rLf1KcoG/z8Y+duB/U7XxeEzIaDSi4XBIg8GA+v0B9fp96vV61O12qdPpULvdoVa7Tc1WixrNJjUaTarXG9TudIxSqfTN7o7fAL9cLnc5u3P25kzX65UmkwnNZjNIfV0CIwfwdDrRETnKHOkgc7Cee/G0cjAlILDZbOjt7RfVGw1D/4oEpl0l4MDx7iNgGAat12v6+fpK1Vrd0HWdJ4H/HAImXCUAuAO+F1itVrRcLmk+n9N0OqVKpWrYXT/XsOAcARt+N/0usFdA07QPyRUKZHf9XMNqNwUcuM/0728CeF+Ikf9eyCzEbKwpl88zBcRWkwI3sAtuAt2BhCWwc2e3F+voTHqOKYB9jq32EC4gjgDe3fD93hHI6jmeAIqMJYAZuIHNCJnbqOXTC7cEtrZAJqvzBFDhUFzUYHxLuC0ggKrRSwEtm+UJoLyaM+ABmwHM+VbBLQHApUA6k+EJoLZjBu7AiAT7wOXoHQGNKYCDBXvagbhFGHApkEprTAFxqn2cARvqCxfxwC2BEyVTaZ4AjlRnBjxQJVgxchlU00QqxROo1euWgOjcH4x8Dt9ud6ZAPMkUqNZqdBICaqA7/vA/tkAskeQJVKrVBwIW+BHcEYgneALlildAwGQE4FMw4oJLgWgszhQoV8ztI2EPoXbcYLdAJBbjCZTKZVNABVFGAZaBQDjKFCiWSs8JKIDeQCAUifIECkU/gd1TYBkIBMMRnkC+UDQrmIRxgN6YAqEwTwB3OPxQ1SE36OeFLSDucPjh38qPYIgngDscrlG4yeAygfMcRypONRwsqO0or6hwKDLY59hqWO1YcPjPMe0YOeDfX4I8gX+oBQLvEwJiQgPuVJwAAAAASUVORK5CYII=" InformativeScreenshot="dd3baf3846fc75c920675dd35b131161.png" Selector="&lt;html app='chrome.exe' title='Đăng nhập'/&gt;" Url="https://daotao.qnu.edu.vn/Login" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
