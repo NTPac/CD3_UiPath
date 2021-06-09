@@ -1,6 +1,14 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="GetSchedule" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="654,1161" sap2010:WorkflowViewState.IdRef="GetSchedule_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="GetSchedule" this:GetSchedule.in_K="40" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_K" Type="InArgument(x:Int32)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>821,2792</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>GetSchedule_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="36">
+    <scg:List x:TypeArguments="x:String" Capacity="37">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -37,6 +45,7 @@
       <x:String>UiPath.DataTableUtilities</x:String>
       <x:String>System.Reflection</x:String>
       <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -76,49 +85,190 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="GetSchedule" sap:VirtualizedContainerService.HintSize="552,1096" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="GetSchedule" sap:VirtualizedContainerService.HintSize="684,2727" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Int32" Name="startK" />
+      <Variable x:TypeArguments="x:Int32" Name="endK" />
+      <Variable x:TypeArguments="x:String" Name="desktop" />
+    </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Trang quản lý đào tạo" sap:VirtualizedContainerService.HintSize="510,1004" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
+    <Assign sap:VirtualizedContainerService.HintSize="642,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[startK]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[1977+in_K]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="642,60" sap2010:WorkflowViewState.IdRef="Assign_9">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Int32">[endK]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Int32">[startK+9]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[desktop]" sap:VirtualizedContainerService.HintSize="642,61" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_2" SpecialFolder="Desktop" />
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Trang quản lý đào tạo" sap:VirtualizedContainerService.HintSize="642,2334" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="476,788" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="608,2118" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="sd:DataTable" Name="extractTableData" />
-              <Variable x:TypeArguments="x:String" Name="desktop" />
-              <Variable x:TypeArguments="sd:DataTable" Name="x" />
+              <Variable x:TypeArguments="x:Int32" Name="nh" />
             </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[extractTableData]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='STT' ReferenceIdx='0' Name='STT'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Mã lớp học phần' ReferenceIdx='1' Name='Mã lớp học phần'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Tên học phần' ReferenceIdx='2' Name='Tên học phần'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='STC' ReferenceIdx='3' Name='STC'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Thông tin' ReferenceIdx='4' Name='Thông tin'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Giảng viên' ReferenceIdx='5' Name='Giảng viên'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Ngày bắt đầu' ReferenceIdx='6' Name='Ngày bắt đầu'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Ngày kết thúc' ReferenceIdx='7' Name='Ngày kết thúc'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest' /&gt;" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="Rows" MaximumResults="0">
-              <uix:NExtractData.Target>
-                <uix:TargetAnchorable DesignTimeRectangle="323, 309, 915, 322" FriendlyName="'TABLE'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;" InformativeScreenshot="019d54b780300b1f13947603f13ab144.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Trang quản lý đào tạo' /&gt;" SearchSteps="Selector" />
-              </uix:NExtractData.Target>
-            </uix:NExtractData>
-            <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[desktop]" sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="Desktop" />
-            <ui:BuildDataTable DataTable="[x]" DisplayName="Build Data Table" sap:VirtualizedContainerService.HintSize="434,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Thứ_x0020_2&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Thứ_x0020_3&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Thứ_x0020_4&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Thứ_x0020_5&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Thứ_x0020_6&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Thứ_x0020_7&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Chủ_x0020_nhật&quot; msdata:Caption=&quot;&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;1000&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="434,288" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[desktop+&quot;\Schedule.xlsx&quot;]">
+            <uix:NSelectItem DisplayName="Select Item 'Năm học'" sap:VirtualizedContainerService.HintSize="566,166" sap2010:WorkflowViewState.IdRef="NSelectItem_2" Item="Học phần">
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="2">
+                  <x:String>Tuần</x:String>
+                  <x:String>Học phần</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://daotao.qnu.edu.vn/Home/ClassStudentSchedules" DesignTimeRectangle="781, 251, 84, 20" ElementType="DropDown" FriendlyName="'Học phần'" FullSelectorArgument="&lt;webctrl id='TypeID' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='TypeID' tag='SELECT' type='' aaname='' /&gt;" InformativeScreenshot="ec966112b04259421cbaf61c93e60199.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Trang quản lý đào tạo' /&gt;" SearchSteps="FuzzySelector">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="308, 251, 945, 20" FriendlyName="'Năm học'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='body' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='body' tag='DIV' type='' aaname='                     Năm học :                     Học kỳ :                     Tuần :                                       ' check:text='Năm học :2017-2018&amp;#xA;2018-2019&amp;#xA;2019-2020&amp;#xA;2020-2021&amp;#xA;2021-2022&amp;#xA;2022-2023&amp;#xA;2023-2024&amp;#xA;2024-2025&amp;#xA;2025-2026' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="566,1820" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[desktop+&quot;\Schedule.xlsx&quot;]">
               <ui:ExcelApplicationScope.Body>
                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="532,1711" sap2010:WorkflowViewState.IdRef="Sequence_3">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:ExcelWriteRange AddHeaders="True" DataTable="[extractTableData]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet1" StartingCell="A1" />
+                    <Assign sap:VirtualizedContainerService.HintSize="490,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">[nh]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">[startK]</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="490,1519" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+                      <ui:InterruptibleWhile.Body>
+                        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="454,1354" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="x:Int32" Name="hk" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <uix:NSelectItem DisplayName="Select Item 'Năm học'" sap:VirtualizedContainerService.HintSize="412,166" sap2010:WorkflowViewState.IdRef="NSelectItem_1" Item="[nh.ToString+&quot;-&quot;+(nh+1).ToString]">
+                            <uix:NSelectItem.Items>
+                              <scg:List x:TypeArguments="x:String" Capacity="9">
+                                <x:String>2017-2018</x:String>
+                                <x:String>2018-2019</x:String>
+                                <x:String>2019-2020</x:String>
+                                <x:String>2020-2021</x:String>
+                                <x:String>2021-2022</x:String>
+                                <x:String>2022-2023</x:String>
+                                <x:String>2023-2024</x:String>
+                                <x:String>2024-2025</x:String>
+                                <x:String>2025-2026</x:String>
+                              </scg:List>
+                            </uix:NSelectItem.Items>
+                            <uix:NSelectItem.Target>
+                              <uix:TargetAnchorable BrowserURL="https://daotao.qnu.edu.vn/Home/ClassStudentSchedules" DesignTimeRectangle="376, 334, 100, 20" ElementType="DropDown" FriendlyName="'2017-2018'" FullSelectorArgument="&lt;webctrl tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' type='' aaname='' /&gt;" ImageBase64="" InformativeScreenshot="033d2f677296674c74237de51163f7e0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Trang quản lý đào tạo' /&gt;" SearchSteps="Selector, FuzzySelector">
+                                <uix:TargetAnchorable.Anchors>
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                    <uix:Target DesignTimeRectangle="308, 334, 945, 20" FriendlyName="'Năm học'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='body' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='body' tag='DIV' type='' aaname='                     Năm học :                     Học kỳ :                     Tuần :                                       ' check:text='Năm học :2017-2018&amp;#xA;2018-2019&amp;#xA;2019-2020&amp;#xA;2020-2021&amp;#xA;2021-2022&amp;#xA;2022-2023&amp;#xA;2023-2024&amp;#xA;2024-2025&amp;#xA;2025-2026' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image" />
+                                  </scg:List>
+                                </uix:TargetAnchorable.Anchors>
+                              </uix:TargetAnchorable>
+                            </uix:NSelectItem.Target>
+                          </uix:NSelectItem>
+                          <Assign sap:VirtualizedContainerService.HintSize="412,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[nh]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[nh +1]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="412,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[hk]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">1</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <ui:InterruptibleWhile DisplayName="While" sap:VirtualizedContainerService.HintSize="412,856" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_2">
+                            <ui:InterruptibleWhile.Body>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="376,691" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <uix:NSelectItem DisplayName="Select Item 'Năm học'" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NSelectItem_3" Item="[&quot;Học kỳ &quot;+hk.ToString]">
+                                  <uix:NSelectItem.Items>
+                                    <scg:List x:TypeArguments="x:String" Capacity="3">
+                                      <x:String>Học kỳ 1</x:String>
+                                      <x:String>Học kỳ 2</x:String>
+                                      <x:String>Học kỳ 3</x:String>
+                                    </scg:List>
+                                  </uix:NSelectItem.Items>
+                                  <uix:NSelectItem.Target>
+                                    <uix:TargetAnchorable BrowserURL="https://daotao.qnu.edu.vn/Home/ClassStudentSchedules" DesignTimeRectangle="531, 334, 100, 20" ElementType="DropDown" FriendlyName="'Học kỳ 3'" FullSelectorArgument="&lt;webctrl id='TermID' tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl id='TermID' tag='SELECT' type='' aaname='' /&gt;" InformativeScreenshot="2800ba47575393e67862098e2c9188c0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Trang quản lý đào tạo' /&gt;" SearchSteps="FuzzySelector">
+                                      <uix:TargetAnchorable.Anchors>
+                                        <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                          <uix:Target DesignTimeRectangle="308, 334, 945, 20" FriendlyName="'Năm học'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='body' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl css-selector='body&amp;gt;form&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='body' tag='DIV' type='' aaname='                     Năm học :                     Học kỳ :                     Tuần :                                       ' check:text='Năm học :2017-2018&amp;#xA;2018-2019&amp;#xA;2019-2020&amp;#xA;2020-2021&amp;#xA;2021-2022&amp;#xA;2022-2023&amp;#xA;2023-2024&amp;#xA;2024-2025&amp;#xA;2025-2026' /&gt;" ImageBase64="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" SearchSteps="FuzzySelector, Image" />
+                                        </scg:List>
+                                      </uix:TargetAnchorable.Anchors>
+                                    </uix:TargetAnchorable>
+                                  </uix:NSelectItem.Target>
+                                </uix:NSelectItem>
+                                <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[extractTableData]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='STT' ReferenceIdx='0' Name='STT'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Mã lớp học phần' ReferenceIdx='1' Name='Mã lớp học phần'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Tên học phần' ReferenceIdx='2' Name='Tên học phần'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='STC' ReferenceIdx='3' Name='STC'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Thông tin' ReferenceIdx='4' Name='Thông tin'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Giảng viên' ReferenceIdx='5' Name='Giảng viên'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Ngày bắt đầu' ReferenceIdx='6' Name='Ngày bắt đầu'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Ngày kết thúc' ReferenceIdx='7' Name='Ngày kết thúc'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest' /&gt;" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="Rows" MaximumResults="0">
+                                  <uix:NExtractData.Target>
+                                    <uix:TargetAnchorable DesignTimeRectangle="323, 309, 915, 322" FriendlyName="'TABLE'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;" InformativeScreenshot="019d54b780300b1f13947603f13ab144.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Trang quản lý đào tạo' /&gt;" SearchSteps="Selector" />
+                                  </uix:NExtractData.Target>
+                                </uix:NExtractData>
+                                <ui:ExcelWriteRange AddHeaders="True" DataTable="[extractTableData]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="[nh.ToString+&quot;-&quot;+(nh+1).ToString+&quot;_&quot;+hk.ToString]" StartingCell="A1" />
+                                <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[hk]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[hk+1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </ui:InterruptibleWhile.Body>
+                            <ui:InterruptibleWhile.Condition>
+                              <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="hk&lt;= 3" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_2" />
+                            </ui:InterruptibleWhile.Condition>
+                          </ui:InterruptibleWhile>
+                        </Sequence>
+                      </ui:InterruptibleWhile.Body>
+                      <ui:InterruptibleWhile.Condition>
+                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="nh&lt;endK" sap2010:WorkflowViewState.IdRef="VisualBasicValue`1_1" />
+                      </ui:InterruptibleWhile.Condition>
+                    </ui:InterruptibleWhile>
                   </Sequence>
                 </ActivityAction>
               </ui:ExcelApplicationScope.Body>
