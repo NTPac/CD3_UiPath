@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Login" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="out_CheckLogin" Type="OutArgument(x:Boolean)" />
+    <x:Property Name="out_K" Type="OutArgument(x:Int32)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>770,2142</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>770,2243</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -75,9 +76,17 @@
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>UiPath.CV.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Login" sap:VirtualizedContainerService.HintSize="780,2077" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Login" sap:VirtualizedContainerService.HintSize="780,2178" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="userName" />
       <Variable x:TypeArguments="x:String" Name="password" />
@@ -97,13 +106,13 @@
         <OutArgument x:TypeArguments="x:String">[password]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Đăng nhập" sap:VirtualizedContainerService.HintSize="738,1429" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Đăng nhập" sap:VirtualizedContainerService.HintSize="738,1530" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="704,1213" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="704,1314" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -113,7 +122,7 @@
               <uix:NTypeInto.Target>
                 <uix:TargetAnchorable BrowserURL="https://daotao.qnu.edu.vn/Login" DesignTimeRectangle="573, 458, 220, 34" ElementType="InputBox" FriendlyName="'INPUT txtTaiKhoan'" FullSelectorArgument="&lt;webctrl tag='INPUT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' aaname='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOAAAAAmCAYAAADdnJdIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANCSURBVHhe7Z2xTuNAFEX3//+AgiIp0tCkSJMmFQ0fgGgpopSpKCJReHUQN7oMtjcstkdx7pOOlvF43oztdxiHLfKnSSQS1SICJhIV44uAh8OheXl5aZ6fn0MIA4NbOOZxFpCO/X7fnE6n5v39PYQwMLiFYy7hWUDsjHwhjAuO4ZriLCBbZNuAEMKw4JoiAoYwMREwhIpEwBAqEgFDqEgEDKEiETCEikTAECoymID39/fN3d3dNzj++vp6Pu/x8fHj+FCSk+fh4aF5e3v7aJOfY7TX6/WXuceGOVkLa2jrF7oH/zovzJ/BBBQU/GKxaC189T09PTWr1ao5Ho/fzrkUFbGQhORcLpcfxzabTevYsbhEQNbHtXMPuu5TuB0mFdCRLG19P4G1+g5Yk0sF1FqHugfheplUQN+1XBrmY9fimPq7ilhFzjm83u52u2+5lMPzaF28lqrPd8gyL+d5XtGXRzm22+15F+Zfl4xzNc5fz3UPGKv+3zyHcB3wjBWjCqgCUzFSiCpc+ig4yUK7/OwofBy5JC7FT5vXu7KoOc4xcmqs2rpW5vY8npd+0ZdHAmpOtf06PadfC33cA2933YMwH3jOilEFpLB8V6NfnwOZz+XsykG/CwYujp+rPhfQc3KMPuaWKL6+rrw/zeOSOTq3S7i2XGF+8NwVowmoYtKrlVDBMd//CshYiVLOw7mXCOg/K+8YAjKGa9a1k8cF9HugsRFw3vDcFZPugE5ZfF056O8TsMzj7TInx/rEGUNA/7lsMz474O3Bc1dM+hmQwlK77OvKARSsxFCRqu1FrD7lLXO6OLRdOPWp7fP35dGcfQIqJ+NZqwvIzqixfi3KFeYHz1kxqoBAcen10IuL+S4VECha5fC/gkoA9fn/tZU5SwF9LMf5a6Ty+tx9eZSjS0DGsC7m4Dxfu+6B1gC/eQ7hOuAZKwYRcC4gkcSZAgmoX0LhNoiAnyCbdi7tar6TDQn3t9xdI+BtEgE/8ddDmHL3gwh4m0TAECoSAUOoSAQMoSIRMISKRMAQKhIBQ6hIBAyhIq0C5stZQhifzi9nydeThTAuuNX59WQEHdjJFhlCGBbccvmILwImEolpIwImEtWiaf4CMrvzJtepM/gAAAAASUVORK5CYII=" InformativeScreenshot="20f17a6d013abc4dca10cf2120d2191a.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Đăng nhập' /&gt;" SearchSteps="FuzzySelector, Image">
                   <uix:TargetAnchorable.Anchors>
-                    <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                       <uix:Target DesignTimeRectangle="658, 428, 50, 20" ElementType="Text" FriendlyName="'-*-'" FullSelectorArgument="&lt;webctrl aaname='-*-' tag='DIV' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='-*-' tag='DIV' type='' check:text='-*-' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADYAAAAYCAYAAACx4w6bAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACYSURBVFhH7dQhDkQhDEVR9r8DBAaDwSBYAg6PQrECHO79lPwZMXpoUtKbYAjmpKQGl6YwaSlMWiywtRZyzphzvjfnOw5rrSGEgJQSYowbyBHLxMYYcM5tJFfHYfT9aGK99z01QnKky0Naf4fRcrDW7kPLgjbib6WU7xvv/ZFtaWqtoHNLH49+RWkpTFoKk5bCpKUwaV0KAx4SfxfAHtUxsgAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
                     </scg:List>
                   </uix:TargetAnchorable.Anchors>
@@ -130,7 +139,7 @@
                 <uix:TargetAnchorable BrowserURL="https://daotao.qnu.edu.vn/Login" DesignTimeRectangle="573, 566, 220, 32" ElementType="Button" FriendlyName="'Đăng nhập'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' aaname='Đăng nhập' check:text='Đăng nhập' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOAAAAAkCAYAAACQVDZDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALWSURBVHhe7Z2xbhNBFEX5N74A/oB/4APogBqJGvEBiAooqaCKaChokBAFBYiAbYwsJ2HhOtzl5Wm8iT27mSCdKx15d9/M7Gw0x+M4Ra51hJBmQUBCGqYX8PmbVXfz/mF3/c5XAJgIOSbXnF5AFW49+FbsBADjIMfkmtMLWGoMANPgICBAAxwEBGiAg4AADXAQEKABDgICNMBBQIAGOAgI0AAHASt5/PJnd3T894cY8uHz8Zl2zw5W3cH79eZYNZ3H+tTonnlOGT/Ll9lJd/vRvNgGxsFBwEq0aJerX5tXX9Pi1SKOC97XlBYL/CICqv7249Fmfn6zgGlwELCSkoBD11txnoB6Q7j75Ed//vDF8kwdxsVBwEq2ieYdzx81VY8fVS2D2306POnrGi/KoLaOjnM9ttNYqisaz/NSTfdQPdeE5hnjHdDPp53RYXesx0HACrJUisUSOtZiLcloaV2zVD73OOqTaz73fYz6ZOnUXv2Gahrr+/Lfm0i8p66pn9v63M8C++EgYCVakJYp17TIS7uFFq9lsFSxnfqJfOy+QwLGthozCrit5muxlgWMwuWxYHccBKxkm4AWywtXC9ZRe/cZErBUm0JA38eZ/dkNo4D5+dQ3jgW74yBgJdsEjNdzm3g+JGA+FlMImMeM55ojO+D4OAhYSZZLWCov0ryIdf2iH0GjDG47hYB5PllA983PAvvhIGAlXpA5USihBey8enf6O5YW8XkCxr66j76NHFtAz8H38Pz0bELH+gbVyc8Gu+Mg4H+GpLU4pfrYWEC9luqwHw4CXnG023jn8k4Vd7Ix0a4a/xwhEHAaHAS84kgKCeBc5u4nEHAaHAQEaICDgAANcBAQoAEOAgI0wEFAgAY4CAjQAAcBARrg9ALeuHf6jyNKjQFgHOSYXHN6AZ++nm0KpU4AMA5yTK45vYDr9bpbLBbdfD4HgImQY3LN6QUkhFx2uu43RvcSxwYMOjgAAAAASUVORK5CYII=" InformativeScreenshot="b4ea98a2d83d40c99d499186cf61af80.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Đăng nhập' /&gt;" SearchSteps="FuzzySelector, Image" />
               </uix:NClick.Target>
             </uix:NClick>
-            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Tên đăng'" sap:VirtualizedContainerService.HintSize="662,381" sap2010:WorkflowViewState.IdRef="NCheckState_1">
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Tên đăng'" sap:VirtualizedContainerService.HintSize="662,482" sap2010:WorkflowViewState.IdRef="NCheckState_1">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="304,155" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -149,7 +158,7 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="304,155" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="304,256" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -161,6 +170,14 @@
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Int32">[out_K]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Int32">[int32.Parse(userName.Substring(0,2))]</InArgument>
                     </Assign.Value>
                   </Assign>
                 </Sequence>
