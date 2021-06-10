@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="out_CheckLogin" Type="OutArgument(x:Boolean)" />
     <x:Property Name="out_K" Type="OutArgument(x:Int32)" />
+    <x:Property Name="out_MSV" Type="OutArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>770,2243</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>821,2344</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Login_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -85,7 +86,7 @@
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Login" sap:VirtualizedContainerService.HintSize="780,2178" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Login" sap:VirtualizedContainerService.HintSize="780,2279" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="userName" />
       <Variable x:TypeArguments="x:String" Name="password" />
@@ -105,13 +106,13 @@
         <OutArgument x:TypeArguments="x:String">[password]</OutArgument>
       </ui:InputDialog.Result>
     </ui:InputDialog>
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Đăng nhập" sap:VirtualizedContainerService.HintSize="738,1530" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Đăng nhập" sap:VirtualizedContainerService.HintSize="738,1631" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="704,1314" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="704,1415" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -138,7 +139,7 @@
                 <uix:TargetAnchorable BrowserURL="https://daotao.qnu.edu.vn/Login" DesignTimeRectangle="573, 566, 220, 32" ElementType="Button" FriendlyName="'Đăng nhập'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' aaname='Đăng nhập' check:text='Đăng nhập' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOAAAAAkCAYAAACQVDZDAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALWSURBVHhe7Z2xbhNBFEX5N74A/oB/4APogBqJGvEBiAooqaCKaChokBAFBYiAbYwsJ2HhOtzl5Wm8iT27mSCdKx15d9/M7Gw0x+M4Ra51hJBmQUBCGqYX8PmbVXfz/mF3/c5XAJgIOSbXnF5AFW49+FbsBADjIMfkmtMLWGoMANPgICBAAxwEBGiAg4AADXAQEKABDgICNMBBQIAGOAgI0AAHASt5/PJnd3T894cY8uHz8Zl2zw5W3cH79eZYNZ3H+tTonnlOGT/Ll9lJd/vRvNgGxsFBwEq0aJerX5tXX9Pi1SKOC97XlBYL/CICqv7249Fmfn6zgGlwELCSkoBD11txnoB6Q7j75Ed//vDF8kwdxsVBwEq2ieYdzx81VY8fVS2D2306POnrGi/KoLaOjnM9ttNYqisaz/NSTfdQPdeE5hnjHdDPp53RYXesx0HACrJUisUSOtZiLcloaV2zVD73OOqTaz73fYz6ZOnUXv2Gahrr+/Lfm0i8p66pn9v63M8C++EgYCVakJYp17TIS7uFFq9lsFSxnfqJfOy+QwLGthozCrit5muxlgWMwuWxYHccBKxkm4AWywtXC9ZRe/cZErBUm0JA38eZ/dkNo4D5+dQ3jgW74yBgJdsEjNdzm3g+JGA+FlMImMeM55ojO+D4OAhYSZZLWCov0ryIdf2iH0GjDG47hYB5PllA983PAvvhIGAlXpA5USihBey8enf6O5YW8XkCxr66j76NHFtAz8H38Pz0bELH+gbVyc8Gu+Mg4H+GpLU4pfrYWEC9luqwHw4CXnG023jn8k4Vd7Ix0a4a/xwhEHAaHAS84kgKCeBc5u4nEHAaHAQEaICDgAANcBAQoAEOAgI0wEFAgAY4CAjQAAcBARrg9ALeuHf6jyNKjQFgHOSYXHN6AZ++nm0KpU4AMA5yTK45vYDr9bpbLBbdfD4HgImQY3LN6QUkhFx2uu43RvcSxwYMOjgAAAAASUVORK5CYII=" InformativeScreenshot="b4ea98a2d83d40c99d499186cf61af80.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Đăng nhập' /&gt;" SearchSteps="FuzzySelector, Image" />
               </uix:NClick.Target>
             </uix:NClick>
-            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Tên đăng'" sap:VirtualizedContainerService.HintSize="662,482" sap2010:WorkflowViewState.IdRef="NCheckState_1">
+            <uix:NCheckState Exists="{x:Null}" DisplayName="Check App State 'Tên đăng'" sap:VirtualizedContainerService.HintSize="662,583" sap2010:WorkflowViewState.IdRef="NCheckState_1">
               <uix:NCheckState.IfExists>
                 <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="304,155" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
@@ -157,7 +158,7 @@
                 </Sequence>
               </uix:NCheckState.IfExists>
               <uix:NCheckState.IfNotExists>
-                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="304,256" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="304,357" sap2010:WorkflowViewState.IdRef="Sequence_4">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -177,6 +178,14 @@
                     </Assign.To>
                     <Assign.Value>
                       <InArgument x:TypeArguments="x:Int32">[int32.Parse(userName.Substring(0,2))]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_4">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[out_MSV]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[userName]</InArgument>
                     </Assign.Value>
                   </Assign>
                 </Sequence>

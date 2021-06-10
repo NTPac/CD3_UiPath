@@ -84,6 +84,7 @@
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="check" />
       <Variable x:TypeArguments="x:Int32" Name="k" />
+      <Variable x:TypeArguments="x:String" Name="msv" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -92,8 +93,15 @@
     </sap:WorkflowViewStateService.ViewState>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke Login workflow" sap:VirtualizedContainerService.HintSize="755,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Login.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_CheckLogin">[check]</OutArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="out_K">[k]</OutArgument>
+        <OutArgument x:TypeArguments="x:Boolean" x:Key="out_CheckLogin">
+          <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="check" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="out_K">
+          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="k" />
+        </OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_MSV">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="msv" />
+        </OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <If Condition="[check]" sap:VirtualizedContainerService.HintSize="755,818" sap2010:WorkflowViewState.IdRef="If_1">
@@ -106,7 +114,9 @@
           </sap:WorkflowViewStateService.ViewState>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetMark workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="GetMark.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <scg:Dictionary x:TypeArguments="x:String, Argument" />
+              <InArgument x:TypeArguments="x:String" x:Key="in_msv">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="msv" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke GetSchedule workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="GetSchedule.xaml">
@@ -114,11 +124,19 @@
               <InArgument x:TypeArguments="x:Int32" x:Key="in_K">
                 <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="k" />
               </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_msv">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="msv" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke TestsChedule workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="TestsChedule.xaml">
             <ui:InvokeWorkflowFile.Arguments>
-              <InArgument x:TypeArguments="x:Int32" x:Key="in_K">[k]</InArgument>
+              <InArgument x:TypeArguments="x:Int32" x:Key="in_K">
+                <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="k" />
+              </InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="in_msv">
+                <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="msv" />
+              </InArgument>
             </ui:InvokeWorkflowFile.Arguments>
           </ui:InvokeWorkflowFile>
           <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke logout workflow" sap:VirtualizedContainerService.HintSize="334,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="logout.xaml">

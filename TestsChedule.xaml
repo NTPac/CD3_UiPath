@@ -1,11 +1,12 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="TestsChedule" this:TestsChedule.in_K="40" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_K" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_msv" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>778,2674</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>821,2676</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TestsChedule_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -84,15 +85,11 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TestsChedule" sap:VirtualizedContainerService.HintSize="788,2609" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="TestsChedule" sap:VirtualizedContainerService.HintSize="788,2611" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="startK" />
       <Variable x:TypeArguments="x:Int32" Name="endK" />
-      <Variable x:TypeArguments="s:String[]" Name="HK">
-        <Variable.Default>
-          <mva:VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;Học kỳ 1&quot;,&quot;Học kỳ 2&quot;,&quot;Học kỳ 3&quot;}" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="s:String[]" Default="[{&quot;Học kỳ 1&quot;,&quot;Học kỳ 2&quot;,&quot;Học kỳ 3&quot;}]" Name="HK" />
       <Variable x:TypeArguments="x:String" Name="desktop" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
@@ -117,13 +114,13 @@
       </Assign.Value>
     </Assign>
     <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[desktop]" sap:VirtualizedContainerService.HintSize="746,61" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="Desktop" />
-    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Trang quản lý đào tạo" sap:VirtualizedContainerService.HintSize="746,2216" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Trang quản lý đào tạo" sap:VirtualizedContainerService.HintSize="746,2218" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="Simulate" Version="V1">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="712,2000" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="712,2002" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Int32" Name="i" />
             </Sequence.Variables>
@@ -140,7 +137,7 @@
                 <InArgument x:TypeArguments="x:Int32">[startK]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="670,1807" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[desktop+&quot;\TestsChedule.xlsx&quot;]">
+            <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="670,1807" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[desktop+&quot;\TestsChedule_&quot;+in_msv+&quot;.xlsx&quot;]">
               <ui:ExcelApplicationScope.Body>
                 <ActivityAction x:TypeArguments="ui:WorkbookApplication">
                   <ActivityAction.Argument>
@@ -177,7 +174,7 @@
                             <uix:NSelectItem.Target>
                               <uix:TargetAnchorable BrowserURL="http://daotao.qnu.edu.vn/Home/Exam" DesignTimeRectangle="373, 228, 100, 20" ElementType="DropDown" FriendlyName="'2020-2021'" FullSelectorArgument="&lt;webctrl tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' type='' aaname='' /&gt;" InformativeScreenshot="b8c31de2281961e99b2831c04f6ec59f.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Trang quản lý đào tạo' /&gt;" SearchSteps="FuzzySelector">
                                 <uix:TargetAnchorable.Anchors>
-                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
                                     <uix:Target DesignTimeRectangle="308, 226, 168, 24" FriendlyName="'Năm học:'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tag='TD' type='' aaname='Năm học: ' check:text='Năm học: 2017-2018&amp;#xA;2018-2019&amp;#xA;2019-2020&amp;#xA;2020-2021&amp;#xA;2021-2022&amp;#xA;2022-2023&amp;#xA;2023-2024&amp;#xA;2024-2025&amp;#xA;2025-2026' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAKwAAAAcCAYAAAD8+1StAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANkSURBVHhe7ZbbkesgDEBvT64mRcSfacOTz3SRrSSTMnYmX2mAtQBhIcTDdpK19+rMeCcYIoQ4kP1nFGVHqLDKrlBhlV2hwiq7QoVlnE4nfTbw5FBhCaVCKZ8ltxcqLEGF3Q4qbAMq7HZ4k7B3M3TD+Nd/Pl7Nw37eJyrsdmgX9jaYruvMcPPtwMNcj53pv5iSfrz8naXAQXhlvDZKwt7Pbo3uwUOKuNqE/nPci+tp7U9qnFCLV8nn+2p68v3sfLC3v3QJzRY2tyn1Yr6CbQlrZSUb9/jqo7btD1LwOrm1TG3eL4/Pr70Wr5KPl3WKn5kPPdiFsMdh/HmniwYyhYFF4UPG200d23QMFMW+F8bH+CKep9s7PUBuDPbTvIBonq4312/fYTeCx3LIRZI2FN75mFYAEh+gN5M0X6UfaydSi1fJhx82IJ4P69qP9U/HLuFyuZjn8+lbE/AO+iRmCjsmmZzEWFh+67hCTuNRGN4OhZEKG/BFC/Hd3Lyok6SszTeVtzPkipRAc5diF9fma+HXJgnUmi8SxViQT3wj383V11HMbSYgJOz74XCIpIXP8A76JGnnCzt+dJLh4tMbNsZJEwlKF5sUzcWLby4kjgXQeGIhw0bV8szTKmy0waReE5B/+TBGdQqyeGytWoVltZqbT0Fmsc4zoWKitNI7ziJhUSpXUFkEu6hxYnzKwtJNWC5sfCN4Qvz0u620COv+xSHrmCWIy43mvk7YNN6sfOw8+cP9CmEBLmhNVmChsCN+UcMtFnYSFQsbi/IXhU1kBaBe/J3NhQsiyDUiShFi+u/gE42T4zXn4/e19Ev0KmEBKm1NVmC5sCNOzt70QVhJtliUdwpb3uT4YM0hL6yLKW6eJAOvYUkOQTC7Pi4ipRSvJR87Z/1Qi3VeAUpbkxVYJWzYsFAkLsXU/wlhsX+an7W5BNImCuSKZG/WwsbFNz6vDc+VI4/Py1SLV8nHy16TFXi1sACIWpMVWCnsCD/Vvo1XPP7LgIV6r7CAG4Pz8w2040l/iMVlJohFYusUY/q1hD5yO/I8pofmUF4LpS1ePh/3b43wCHue1vxztAv7H5MrkvJ5/qyw8c/fOlTY7aA3bAMq7HZQYRtQYbeDCtsIFEqf339yqLDKrlBhlV2hwiq7QoVVdoQxP9GyKEWUsUe+AAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
                                   </scg:List>
                                 </uix:TargetAnchorable.Anchors>
@@ -219,7 +216,7 @@
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[extractTableData]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Mã học phần' ReferenceIdx='0' Name='Mã học phần'&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Tên học phần' ReferenceIdx='1' Name='Tên học phần'&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='STC' ReferenceIdx='2' Name='STC'&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Ngày thi' ReferenceIdx='3' Name='Ngày thi'&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Giờ thi' ReferenceIdx='4' Name='Giờ thi'&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Thời lượng (phút)' ReferenceIdx='5' Name='Thời lượng (phút)'&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Phòng thi' ReferenceIdx='6' Name='Phòng thi'&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Địa điểm' ReferenceIdx='7' Name='Địa điểm'&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Ghi chú' ReferenceIdx='8' Name='Ghi chú'&gt;&#xD;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xD;&#xA;&#x9;&lt;/Column&gt;&#xD;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest' /&gt;" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NExtractData_1" MaximumResults="0">
+                                        <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[extractTableData]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Mã học phần' ReferenceIdx='0' Name='Mã học phần'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Tên học phần' ReferenceIdx='1' Name='Tên học phần'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='STC' ReferenceIdx='2' Name='STC'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Ngày thi' ReferenceIdx='3' Name='Ngày thi'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Giờ thi' ReferenceIdx='4' Name='Giờ thi'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Thời lượng (phút)' ReferenceIdx='5' Name='Thời lượng (phút)'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Phòng thi' ReferenceIdx='6' Name='Phòng thi'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Địa điểm' ReferenceIdx='7' Name='Địa điểm'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Ghi chú' ReferenceIdx='8' Name='Ghi chú'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest' /&gt;" sap:VirtualizedContainerService.HintSize="334,166" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="Rows" MaximumResults="0">
                                           <uix:NExtractData.Target>
                                             <uix:TargetAnchorable DesignTimeRectangle="298, 343, 965, 93" FriendlyName="'TABLE'" FullSelectorArgument="&lt;webctrl parentid='divLichThi' tag='TABLE' /&gt;" InformativeScreenshot="c84c4db64ab93d815ab2b58fc5d07d00.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Trang quản lý đào tạo' /&gt;" SearchSteps="Selector" />
                                           </uix:NExtractData.Target>
